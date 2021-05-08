@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
+import org.junit.Assert;
 
 import com.fullteaching.backend.course.Course;
 import com.fullteaching.backend.filegroup.FileGroup;
@@ -27,6 +28,7 @@ public class courseDetailsTest {
 		Mockito.when(course.getTitle()).thenReturn("title teste");
 		CourseDetails courseDetails = new CourseDetails(course);
 		Assertions.assertEquals("title teste", courseDetails.getCourse().getTitle());
+		Assert.assertEquals(course, courseDetails.getCourse());
 	}
 	
 	
@@ -72,5 +74,12 @@ public class courseDetailsTest {
 		courseDetails.setCourse(course);
 		Assertions.assertEquals("Course teste", courseDetails.getCourse().getTitle());
 	}
+	
+	@Test
+	public void testeCourseNull() {
+		CourseDetails courseDetails = new CourseDetails();
+		Assert.assertFalse(courseDetails.equals(null));
+	}
+
 	
 }

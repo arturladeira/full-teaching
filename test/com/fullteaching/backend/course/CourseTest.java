@@ -4,6 +4,7 @@ import static org.mockito.Mockito.mock;
 
 import java.util.HashSet;
 import java.util.Set;
+import org.junit.Assert;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -105,6 +106,26 @@ public class CourseTest {
 		sessionList.add(session);
 		course.setSessions(sessionList);
 		Assertions.assertEquals(sessionList, course.getSessions());
+	}
+	
+	@Test
+	public void testeCourseNull() {
+		Course course = new Course();
+		Assert.assertFalse(course.equals(null));
+	}
+
+	@Test
+	public void testSameInstance() {
+		User teacher = Mockito.mock(User.class);
+		Course anotherCourse = new Course("Teste titulo", " teste imagem", teacher);
+		Assert.assertTrue(anotherCourse.equals(anotherCourse));
+	}
+
+	@Test
+	public void testEqualsDiffentClasses() {
+		Course course = new Course();
+		User teacher = Mockito.mock(User.class);
+		Assert.assertFalse(course.equals(teacher));
 	}
 		
 }

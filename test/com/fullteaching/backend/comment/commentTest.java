@@ -4,6 +4,7 @@ import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Assert;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +14,7 @@ import com.fullteaching.backend.user.User;
 
 
 public class commentTest {
-		
+	
 	@Test
 	public void createComment() {
 		Comment comment = new Comment();
@@ -94,5 +95,13 @@ public class commentTest {
 		Mockito.when(user.getName()).thenReturn("User");
 		Assertions.assertEquals("User", user.getName());
 	}
+	
+	@Test
+	public void testCommentNull() {
+		Comment comment = new Comment();
+		Assert.assertFalse(comment.equals(null));
+	}
+	
+	
 	
 }
