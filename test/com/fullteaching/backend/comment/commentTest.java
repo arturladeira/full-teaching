@@ -48,6 +48,7 @@ public class commentTest {
 		Assertions.assertEquals(1234, commentParent.getDate());
 		comment.setCommentParent(commentParent);
 		Assertions.assertEquals(commentParent, comment.getCommentParent());
+		
 	}
 	
 	@Test
@@ -91,9 +92,12 @@ public class commentTest {
 	
 	@Test
 	public void testUser() {
+		Comment comment = new Comment();
 		User user = mock(User.class);
 		Mockito.when(user.getName()).thenReturn("User");
 		Assertions.assertEquals("User", user.getName());
+		comment.setUser(user);
+		Assertions.assertEquals(user, comment.getUser());
 	}
 	
 	@Test
@@ -102,6 +106,26 @@ public class commentTest {
 		Assert.assertFalse(comment.equals(null));
 	}
 	
+	@Test
+	public void testToString() {
+		User user = mock(User.class);
+		String message = "teste";
+		long date = 123;
+		Comment comment = new Comment(message, date, user);
+		User userParent = mock(User.class);
+		String messageParent = "teste parent";
+		long dateParent = 1234;
+		Comment commentParent = new Comment(messageParent, dateParent, userParent, comment);
+		User user2 = mock(User.class);
+		String message2 = "teste 2";
+		long date2 = 1234;
+		Comment comment2 = new Comment(message2, date2, user2);
+		List<Comment> listComment = new ArrayList<Comment>();
+		listComment.add(comment2);
+		comment.setReplies(listComment);
+		String string = "Comment[message: \"" + commentParent.getMessage() + "\", author: \"" + mock(User.class) + "\", parent: \"" + comment.getCommentParent() + ", #replies: " + comment.getReplies() + "date: \"" + commentParent.getDate() + "\"]";
+		Assert.assertEquals(string, commentParent.toString());
+	}
 	
 	
 }

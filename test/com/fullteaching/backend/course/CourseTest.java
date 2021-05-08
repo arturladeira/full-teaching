@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
 
+import com.fullteaching.backend.comment.Comment;
 import com.fullteaching.backend.coursedetails.CourseDetails;
 import com.fullteaching.backend.session.Session;
 import com.fullteaching.backend.user.User;
@@ -71,12 +72,15 @@ public class CourseTest {
 	
 	@Test
 	public void testTeacher() {
+		Course course = new Course();
 		User teacher = mock(User.class);
 		Mockito.when(teacher.getName()).thenReturn("Teacher");
 		Assertions.assertEquals("Teacher", teacher.getName());
+		course.setTeacher(teacher);
+		Assertions.assertEquals(teacher, course.getTeacher());
 	}
 	
-	
+
 	@Test
 	public void testCourseDetails() {
 		CourseDetails courseDetails = mock(CourseDetails.class);
@@ -126,6 +130,17 @@ public class CourseTest {
 		Course course = new Course();
 		User teacher = Mockito.mock(User.class);
 		Assert.assertFalse(course.equals(teacher));
+	}
+	
+	@Test
+	public void testeEquals() {
+		Course course = new Course();
+		Course anotherCourse = new Course();
+		Course differentCourse = new Course();
+		course.setId(1);
+		anotherCourse.setId(1);
+		differentCourse.setId(2);
+		Assert.assertTrue(course.equals(anotherCourse) && !course.equals(differentCourse));
 	}
 		
 }
