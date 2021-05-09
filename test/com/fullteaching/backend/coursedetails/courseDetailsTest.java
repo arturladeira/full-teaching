@@ -40,6 +40,13 @@ public class courseDetailsTest {
 	}
 	
 	@Test
+	public void testIdWithZero() {
+		CourseDetails courseDetails = new CourseDetails();
+		courseDetails.setId(0);
+		Assertions.assertEquals(0, courseDetails.getId());
+	}
+	
+	@Test
 	public void testInfo() {
 		CourseDetails courseDetails = new CourseDetails();
 		courseDetails.setInfo("info teste");
