@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
 
-import com.fullteaching.backend.comment.Comment;
 import com.fullteaching.backend.coursedetails.CourseDetails;
 import com.fullteaching.backend.session.Session;
 import com.fullteaching.backend.user.User;
