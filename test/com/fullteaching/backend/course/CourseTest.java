@@ -57,6 +57,13 @@ public class CourseTest {
 	}
 	
 	@Test
+	public void testIdWithZero() {
+		Course course = new Course();
+		course.setId(0);
+		Assertions.assertEquals(0, course.getId());
+	}
+	
+	@Test
 	public void testTitle() {
 		Course course = new Course();
 		course.setTitle("title teste");
@@ -141,6 +148,25 @@ public class CourseTest {
 		anotherCourse.setId(1);
 		differentCourse.setId(2);
 		Assert.assertTrue(course.equals(anotherCourse) && !course.equals(differentCourse));
+	}
+	
+	@Test
+	public void testToString() {
+		Course course = new Course();
+		String tittle = "Titulo teste";
+		User theacher = Mockito.mock(User.class);
+		Set<User> students = new HashSet<>();
+		User student = Mockito.mock(User.class);
+		students.add(student);
+		Set<Session> sessions = new HashSet<>();
+		Session session = Mockito.mock(Session.class);
+		sessions.add(session);
+		course.setTitle(tittle);
+		course.setTeacher(theacher);
+		course.setAttenders(students);
+		course.setSessions(sessions);
+		String mensagem = "Course[title: \"" + tittle + "\", teacher: \"" + theacher.getNickName() + "\", #attenders: " + students.size() + ", #sessions: " + sessions.size() + "]";
+		Assert.assertEquals(mensagem, course.toString());
 	}
 		
 }

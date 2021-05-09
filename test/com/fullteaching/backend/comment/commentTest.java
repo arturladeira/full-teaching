@@ -59,6 +59,13 @@ public class commentTest {
 	}
 	
 	@Test
+	public void testIdZero() {
+		Comment comment = new Comment();
+		comment.setId(0);
+		Assertions.assertEquals(0, comment.getId());
+	}
+	
+	@Test
 	public void testMessage() {
 		Comment comment = new Comment();
 		comment.setMessage("teste");
@@ -112,20 +119,14 @@ public class commentTest {
 		String message = "teste";
 		long date = 123;
 		Comment comment = new Comment(message, date, user);
-		User userParent = mock(User.class);
-		String messageParent = "teste parent";
-		long dateParent = 1234;
-		Comment commentParent = new Comment(messageParent, dateParent, userParent, comment);
-		User user2 = mock(User.class);
-		String message2 = "teste 2";
-		long date2 = 1234;
-		Comment comment2 = new Comment(message2, date2, user2);
 		List<Comment> listComment = new ArrayList<Comment>();
-		listComment.add(comment2);
+		listComment.add(comment);
 		comment.setReplies(listComment);
-		String string = "Comment[message: \"" + commentParent.getMessage() + "\", author: \"" + mock(User.class) + "\", parent: \"" + comment.getCommentParent() + ", #replies: " + comment.getReplies() + "date: \"" + commentParent.getDate() + "\"]";
-		Assert.assertEquals(string, commentParent.toString());
+		String string = "Comment[message: \"" + message + "\", author: \"" + user.getNickName() + "\", parent: \"" + "null" + "\", #replies: " + comment.getReplies().size() + "date: \"" + date + "\"]";
+		Assert.assertEquals(string, comment.toString());
 	}
 	
+	
+
 	
 }

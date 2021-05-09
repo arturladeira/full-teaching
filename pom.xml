@@ -32,6 +32,19 @@
 		<finalName>${project.artifactId}-${project.version}</finalName>
 
 		<plugins>
+			<plugin>
+			    <groupId>org.pitest</groupId>
+			    <artifactId>pitest-maven</artifactId>
+			    <version>1.4.0</version>
+			    <dependencies>
+			        <dependency>
+			            <groupId>org.pitest</groupId>
+			            <artifactId>pitest-junit5-plugin</artifactId>
+			            <version>0.8</version>
+			        </dependency>
+			    </dependencies>
+			 </plugin>
+		
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -54,7 +67,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
+				<version>1.4.0</version>
 				<configuration>
 					<mainClass>com.fullteaching.backend.Application</mainClass>
 				</configuration>
@@ -116,6 +129,13 @@
 
 	<dependencies>
 	
+		<!-- https://mvnrepository.com/artifact/org.pitest/pitest-maven -->
+		<dependency>
+		    <groupId>org.pitest</groupId>
+		    <artifactId>pitest-maven</artifactId>
+		    <version>1.6.6</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
